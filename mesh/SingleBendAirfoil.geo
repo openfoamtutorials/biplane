@@ -17,6 +17,15 @@ Macro RotateAirfoilPoint
     Call RotatePoint;
 Return
 
+Macro TranslatePoint
+    pointId = Arguments[0];
+    dx = Arguments[1];
+    dy = Arguments[2];
+    Translate {dx, dy, 0}
+    {
+        Point{pointId};
+    }
+Return
 
 Macro SingleBendAirfoil
     aoa = Arguments[0] * Pi / 180;
@@ -24,6 +33,8 @@ Macro SingleBendAirfoil
     bendLocation = Arguments[2];
     thickness = Arguments[3];
     lc = Arguments[4];
+    dx = Arguments[5];
+    dy = Arguments[6];
 
     allPoints[] = {};
 
@@ -82,6 +93,16 @@ Macro SingleBendAirfoil
 
     For p In {0:#allPoints[] - 1}
         Arguments[] = {allPoints[p], aoa};
+        Call RotateAirfoilPoint;
+    EndFor
+
+    For p In {0:#allPoints[] - 1}
+        Arguments[] = {allPoints[p], dx, dy};
+        Call TranslatePoint;
+    EndFor
+
+    For p In {0:#allPoints[] - 1}
+        Arguments[] = {allPoints[p], globalAoa * Pi / 180};
         Call RotateAirfoilPoint;
     EndFor
 
