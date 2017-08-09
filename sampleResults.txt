@@ -1,0 +1,2 @@
+stagger     gap     differentialAOA     AOA     CL      CD
+0           1       0                   12
