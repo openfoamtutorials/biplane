@@ -1,8 +1,8 @@
-globalAoa = 12; // Angle of attack of the whole wing, in degrees.
+globalAoa = 15; // Angle of attack of the whole wing, in degrees.
 aoa1 = 0; // Angle of attack of first wing, in degrees.
 aoa2 = 0; // Angle of attack of second wing, in degrees.
 biplaneStagger = 0; // chord-normalized stagger.
-biplaneGap = 1; // chord-normalized gap.
+biplaneGap = 0.75; // chord-normalized gap.
 bendHeight = 0.1; // chord-normalized maximum height (due to thickness and bend).
 bendLocation = 0.25; // chord-normalized location of bend along the chord (0 @ LE, 1 @ TE).
 thickness = 0.02; // chord-normalized thickness.
