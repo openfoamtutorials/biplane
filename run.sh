@@ -3,10 +3,12 @@
 # Quit script if any step has error:
 set -e
 
-# 1. Convert the mesh to OpenFOAM format:
+# Make the mesh:
+gmsh mesh/main.geo -3 -format msh2 -o main.msh
+# Convert the mesh to OpenFOAM format:
 gmshToFoam main.msh -case case
-# 2. Adjust polyMesh/boundary:
+# Adjust polyMesh/boundary:
 changeDictionary -case case
-# 3. Finally, run the simulation:
+# Finally, run the simulation:
 simpleFoam -case case
 
